@@ -1,0 +1,17 @@
+name "wkhtmltopdf"
+maintainer "Brian Flad"
+maintainer_email "bflad417@gmail.com"
+license "Apache 2.0"
+description "Installs wkhtmltopdf static binaries"
+version "0.1.0"
+
+recipe "wkhtmltopdf", "Installs wkhtmltoimage and wkhtmltopdf static binaries"
+recipe "wkhtmltopdf::wkhtmltoimage_binary", "Installs wkhtmltoimage static binary"
+recipe "wkhtmltopdf::wkhtmltopdf_binary", "Installs wkhtmltopdf static binary"
+
+supports "amazon"
+supports "centos"
+supports "debian"
+supports "fedora"
+supports "redhat"
+supports "ubuntu"
