@@ -15,4 +15,4 @@ default['wkhtmltopdf']['wkhtmltoimage']['binary_url'] = "#{node['wkhtmltopdf']['
 # wkhtmltopdf
 default['wkhtmltopdf']['wkhtmltopdf']['binary_extracted_name'] = "wkhtmltopdf-#{node['wkhtmltopdf']['arch']}"
 default['wkhtmltopdf']['wkhtmltopdf']['binary_full_name'] = "wkhtmltopdf-#{node['wkhtmltopdf']['version']}-static-#{node['wkhtmltopdf']['arch']}"
-default['wkhtmltopdf']['wkhtmltopdf']['binary_url'] = "#{node['wkhtmltopdf']['mirror_url']}/#{node['wkhtmltopdf']['wkhtmltoimage']['binary_full_name']}.tar.bz2"
+default['wkhtmltopdf']['wkhtmltopdf']['binary_url'] = "#{node['wkhtmltopdf']['mirror_url']}/#{node['wkhtmltopdf']['wkhtmltopdf']['binary_full_name']}.tar.bz2"
