@@ -21,13 +21,13 @@ execute "Extract #{download_dest}" do
   command <<-COMMAND
     tar jxvf #{download_dest}
   COMMAND
-  creates File.join(cache_dir, node['wkhtmltopdf']['wkhtmltopdf'][:binary_extracted_name])
+  creates File.join(cache_dir, node['wkhtmltopdf']['wkhtmltopdf']['binary_extracted_name'])
 end
 
 execute "Copy wkhtmltopdf to #{node['wkhtmltopdf']['install_dir']}" do
   cwd cache_dir
   command <<-COMMAND
-    cp #{node['wkhtmltopdf']['wkhtmltopdf'][:binary_extracted_name]} #{node['wkhtmltopdf']['install_dir']}/wkhtmltopdf
+    cp #{node['wkhtmltopdf']['wkhtmltopdf']['binary_extracted_name']} #{node['wkhtmltopdf']['install_dir']}/wkhtmltopdf
   COMMAND
   creates "#{node['wkhtmltopdf']['install_dir']}/wkhtmltopdf"
 end
