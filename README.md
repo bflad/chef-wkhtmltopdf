@@ -57,16 +57,15 @@ binary_url | URL to download static binary | String | `#{node['wkhtmltopdf']['mi
 
 Here's how you can quickly get testing or developing against the cookbook thanks to [Vagrant](http://vagrantup.com/) and [Berkshelf](http://berkshelf.com/).
 
-    gem install bundler --no-ri --no-rdoc
+    vagrant plugin install vagrant-berkshelf
+    vagrant plugin install vagrant-omnibus
     git clone git://github.com/bflad/chef-wkhtmltopdf.git
     cd chef-wkhtmltopdf
-    bundle install
-    bundle exec vagrant up BOX # BOX being centos6 or ubuntu1204
+    vagrant up BOX # BOX being centos6 or ubuntu1204
 
-You can then SSH into the running VM using the `vagrant ssh` command.
-The VM can easily be stopped and deleted with the `vagrant destroy`
-command. Please see the official [Vagrant documentation](http://vagrantup.com/v1/docs/commands.html)
-for a more in depth explanation of available commands.
+You can then SSH into the running VM using the `vagrant ssh BOX` command.
+
+The VM can easily be stopped and deleted with the `vagrant destroy` command. Please see the official [Vagrant documentation](http://docs.vagrantup.com/v2/cli/index.html) for a more in depth explanation of available commands.
 
 ## Contributing
 
