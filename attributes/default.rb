@@ -3,8 +3,8 @@ if node['kernel']['machine'] == 'x86_64'
 else
 	default['wkhtmltopdf']['arch'] = 'i386'
 end
-default['wkhtmltopdf']['install_dir'] = "/usr/local/bin"
-default['wkhtmltopdf']['mirror_url'] = "http://wkhtmltopdf.googlecode.com/files"
+default['wkhtmltopdf']['install_dir'] = '/usr/local/bin'
+default['wkhtmltopdf']['mirror_url'] = 'http://wkhtmltopdf.googlecode.com/files'
 default['wkhtmltopdf']['version'] = '0.11.0_rc1'
 
 # wkhtmltoimage

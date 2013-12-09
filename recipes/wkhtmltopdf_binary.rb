@@ -3,7 +3,7 @@ download_dest = File.join(cache_dir, "#{node['wkhtmltopdf']['wkhtmltopdf']['bina
 
 packages = value_for_platform_family(
   ['debian'] => %w(libxrender1 libxext6 libfontconfig1),
-  ['fedora','rhel'] => %w(libXrender libXext urw-fonts openssl-devel fontconfig-devel)
+  ['fedora', 'rhel'] => %w(libXrender libXext urw-fonts openssl-devel fontconfig-devel)
 )
 
 packages.each do |pkg|
