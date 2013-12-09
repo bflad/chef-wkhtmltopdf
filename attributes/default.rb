@@ -1,7 +1,7 @@
 if node['kernel']['machine'] == 'x86_64'
-	default['wkhtmltopdf']['arch'] = 'amd64'
+  default['wkhtmltopdf']['arch'] = 'amd64'
 else
-	default['wkhtmltopdf']['arch'] = 'i386'
+  default['wkhtmltopdf']['arch'] = 'i386'
 end
 default['wkhtmltopdf']['install_dir'] = '/usr/local/bin'
 default['wkhtmltopdf']['mirror_url'] = 'http://wkhtmltopdf.googlecode.com/files'

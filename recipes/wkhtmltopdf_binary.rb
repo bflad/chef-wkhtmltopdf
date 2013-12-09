@@ -2,8 +2,8 @@ cache_dir = Chef::Config[:file_cache_path]
 download_dest = File.join(cache_dir, "#{node['wkhtmltopdf']['wkhtmltopdf']['binary_full_name']}.tar.bz2")
 
 packages = value_for_platform_family(
-  ['debian'] => %w(libxrender1 libxext6 libfontconfig1),
-  ['fedora', 'rhel'] => %w(libXrender libXext urw-fonts openssl-devel fontconfig-devel)
+  %w(debian) => %w(libxrender1 libxext6 libfontconfig1),
+  %w(fedora rhel) => %w(libXrender libXext urw-fonts openssl-devel fontconfig-devel)
 )
 
 packages.each do |pkg|
