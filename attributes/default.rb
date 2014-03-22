@@ -1,17 +1,30 @@
-if node['kernel']['machine'] == 'x86_64'
-  default['wkhtmltopdf']['arch'] = 'amd64'
-else
-  default['wkhtmltopdf']['arch'] = 'i386'
-end
-default['wkhtmltopdf']['install_dir'] = '/usr/local/bin'
 default['wkhtmltopdf']['version']     = '0.12.0'
-default['wkhtmltopdf']['sha']         = '03c001d'
-default['wkhtmltopdf']['mirror_url']  = "http://downloads.sourceforge.net/project/wkhtmltopdf/#{node['wkhtmltopdf']['version']}/wkhtmltox-linux-#{node['wkhtmltopdf']['arch']}_#{node['wkhtmltopdf']['version']}-#{node['wkhtmltopdf']['sha']}.tar.xz"
+default['wkhtmltopdf']['build_sha']   = '03c001d'
+default['wkhtmltopdf']['install_dir'] = '/usr/local/bin'
+default['wkhtmltopdf']['lib_dir']     = ''
 
-# wkhtmltoimage
-default['wkhtmltopdf']['wkhtmltoimage']['binary_extracted_name'] = 'wkhtmltoimage'
-default['wkhtmltopdf']['wkhtmltoimage']['binary_full_name'] = "wkhtmltoimage-#{node['wkhtmltopdf']['version']}-static-#{node['wkhtmltopdf']['arch']}"
+case node['platform_family']
+when 'mac_os_x', 'mac_os_x_server'
+  default['wkhtmltopdf']['dependency_packages'] = []
+  default['wkhtmltopdf']['platform'] = 'macosx-10.9.1-x86_64'
+when 'windows'
+  default['wkhtmltopdf']['dependency_packages'] = []
+  if node['kernel']['machine'] == 'x86_64'
+    default['wkhtmltopdf']['platform'] = 'win64'
+  else
+    default['wkhtmltopdf']['platform'] = 'win32'
+  end
+else
+  default['wkhtmltopdf']['dependency_packages'] = value_for_platform_family(
+    %w(debian) => %w(libfontconfig1 libssl0.9.8 libxext6 libxrender1),
+    %w(fedora rhel) => %w(fontconfig libXext libXrender openssl-devel urw-fonts)
+  )
+  if node['kernel']['machine'] == 'x86_64'
+    default['wkhtmltopdf']['platform'] = 'linux-amd64'
+  else
+    default['wkhtmltopdf']['platform'] = 'linux-i386'
+  end
+end
 
-# wkhtmltopdf
-default['wkhtmltopdf']['wkhtmltopdf']['binary_extracted_name'] = 'wkhtmltopdf'
-default['wkhtmltopdf']['wkhtmltopdf']['binary_full_name'] = "wkhtmltopdf-#{node['wkhtmltopdf']['version']}-static-#{node['wkhtmltopdf']['arch']}"
+default['wkhtmltopdf']['archive']     = "wkhtmltox-#{node['wkhtmltopdf']['platform']}_#{node['wkhtmltopdf']['version']}-#{node['wkhtmltopdf']['build_sha']}.tar.xz"
+default['wkhtmltopdf']['mirror_url']  = "http://downloads.sourceforge.net/project/wkhtmltopdf/#{node['wkhtmltopdf']['version']}/#{node['wkhtmltopdf']['archive']}"

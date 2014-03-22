@@ -2,7 +2,11 @@
 
 ## Description
 
-Installs [wkhtmltopdf](http://code.google.com/p/wkhtmltopdf/) static binaries. This cookbook is inspired by https://github.com/firstbanco/chef-wkhtmltopdf.
+Installs [wkhtmltopdf](http://wkhtmltopdf.org) static binaries. This cookbook is inspired by https://github.com/firstbanco/chef-wkhtmltopdf.
+
+Cookbook Compatibility:
+ * chef-wkhtmltopdf 0.1.0: wkhtmltopdf 0.11.0_rc1
+ * chef-wkhtmltopdf 0.2.0: wkhtmltopdf 0.12.0
 
 ## Requirements
 
@@ -12,42 +16,31 @@ Installs [wkhtmltopdf](http://code.google.com/p/wkhtmltopdf/) static binaries. T
 * RedHat 6
 * Ubuntu 12.04
 
+### Cookbooks
+
+[Opscode Cookbooks](https://github.com/opscode-cookbooks/)
+
+* [apt](https://github.com/opscode-cookbooks/apt)
+
 ## Attributes
 
 These attributes are under the `node['wkhtmltopdf']` namespace.
 
 Attribute | Description | Type | Default
 ----------|-------------|------|--------
-arch | wkhtmltopdf architecture | String | (auto-detected, see attributes/default.rb)
+archive | wkhtmltopdf archive name | String | `wkhtmltox-#{node['wkhtmltopdf']['platform']}_#{node['wkhtmltopdf']['version']}-#{node['wkhtmltopdf']['build_sha']}.tar.xz`
+build_sha | wkhtmltopdf build SHA | String | 03c001d
+dependency_packages | Packages that contain wkhtmltopdf dependencies | String | (auto-detected, see attributes/default.rb)
 install_dir | directory to install static binaries | String | /usr/local/bin
-mirror_url | Base URL for wkhtmltopdf files | String | http://wkhtmltopdf.googlecode.com/files
-version | wkhtmltopdf version to install | String | 0.11.0_rc1
-
-### wkhtmltoimage Attributes
-
-These attributes are under the `node['wkhtmltopdf']['wkhtmltoimage']` namespace.
-
-Attribute | Description | Type | Default
-----------|-------------|------|--------
-binary_extracted_name | Extracted name of static binary | String | `wkhtmltoimage-#{node['wkhtmltopdf']['arch']}`
-binary_full_name | Full name of static binary | String | `wkhtmltoimage-#{node['wkhtmltopdf']['version']}-static-#{node['wkhtmltopdf']['arch']}`
-binary_url | URL to download static binary | String | `#{node['wkhtmltopdf']['mirror_url']}/#{node['wkhtmltopdf']['wkhtmltoimage']['binary_full_name']}.tar.bz2`
-
-### wkhtmltopdf Attributes
-
-These attributes are under the `node['wkhtmltopdf']['wkhtmltopdf']` namespace.
-
-Attribute | Description | Type | Default
-----------|-------------|------|--------
-binary_extracted_name | Extracted name of static binary | String | `wkhtmltopdf-#{node['wkhtmltopdf']['arch']}`
-binary_full_name | Full name of static binary | String | `wkhtmltopdf-#{node['wkhtmltopdf']['version']}-static-#{node['wkhtmltopdf']['arch']}`
-binary_url | URL to download static binary | String | `#{node['wkhtmltopdf']['mirror_url']}/#{node['wkhtmltopdf']['wkhtmltopdf']['binary_full_name']}.tar.bz2`
+lib_dir | directory to install libraries | String | ''
+mirror_url | URL for wkhtmltopdf | String | (auto-detected, see attributes/default.rb)
+platform | wkhtmltopdf platform and architecture | String | (auto-detected, see attributes/default.rb)
+version | wkhtmltopdf version to install | String | 0.12.0
 
 ## Recipes
 
-* `recipe[wkhtmltopdf]` Installs wkhtmltoimage and wkhtmltopdf static binaries
-* `recipe[wkhtmltopdf::wkhtmltoimage_binary]` Installs wkhtmltoimage static binary
-* `recipe[wkhtmltopdf::wkhtmltopdf_binary]` Installs wkhtmltopdf static binary
+* `recipe[wkhtmltopdf]` Installs wkhtmltoimage and wkhtmltopdf
+* `recipe[wkhtmltopdf::binary]` Installs wkhtmltoimage and wkhtmltopdf static binaries
 
 ## Usage
 
@@ -72,20 +65,11 @@ The VM can easily be stopped and deleted with the `vagrant destroy` command. Ple
 
 Please use standard Github issues/pull requests and if possible, in combination with testing on the Vagrant boxes.
 
-## License and Author
+## Maintainers
 
-Author:: Brian Flad (<bflad417@gmail.com>)
+* Brian Flad (<bflad417@gmail.com>)
 
-Copyright:: 2013
+## License
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
+Please see licensing information in: [LICENSE](LICENSE)
 
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.

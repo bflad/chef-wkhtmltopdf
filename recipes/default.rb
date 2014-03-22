@@ -1,3 +1,7 @@
+include_recipe 'apt' if node['platform_family'] == 'debian'
 
-include_recipe 'wkhtmltopdf::wkhtmltoimage_binary'
-include_recipe 'wkhtmltopdf::wkhtmltopdf_binary'
+node['wkhtmltopdf']['dependency_packages'].each do |p|
+  package p
+end
+
+include_recipe 'wkhtmltopdf::binary'
