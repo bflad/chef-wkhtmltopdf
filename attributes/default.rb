@@ -1,3 +1,5 @@
+# Upcoming wkhtmlpdf version is '0.12.1' with the github sha '2b560d5'
+#
 default['wkhtmltopdf']['version']     = '0.12.0'
 default['wkhtmltopdf']['build_sha']   = '03c001d'
 default['wkhtmltopdf']['install_dir'] = '/usr/local/bin'
@@ -26,5 +28,7 @@ else
   end
 end
 
+# The sourceforge path for amd64 version http://sourceforge.net/projects/wkhtmltopdf/files/archive/0.12.0/wkhtmltox-linux-amd64_0.12.0-03c001d.tar.xz/download
+#
 default['wkhtmltopdf']['archive']     = "wkhtmltox-#{node['wkhtmltopdf']['platform']}_#{node['wkhtmltopdf']['version']}-#{node['wkhtmltopdf']['build_sha']}.tar.xz"
-default['wkhtmltopdf']['mirror_url']  = "http://downloads.sourceforge.net/project/wkhtmltopdf/#{node['wkhtmltopdf']['version']}/#{node['wkhtmltopdf']['archive']}"
+default['wkhtmltopdf']['mirror_url']  = "http://sourceforge.net/projects/wkhtmltopdf/files/archive/#{node['wkhtmltopdf']['version']}/#{node['wkhtmltopdf']['archive']}/download"
