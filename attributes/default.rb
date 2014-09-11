@@ -1,5 +1,7 @@
 default['wkhtmltopdf']['version']        = '0.12.1'
 default['wkhtmltopdf']['install_method'] = 'binary'
+default['wkhtmltopdf']['install_dir'] = '/usr/local/bin'
+default['wkhtmltopdf']['lib_dir'] = ''
 
 case node['platform_family']
 when 'mac_os_x', 'mac_os_x_server'

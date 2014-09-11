@@ -7,6 +7,7 @@ Installs [wkhtmltopdf](http://wkhtmltopdf.org) static binaries. This cookbook is
 Cookbook Compatibility:
  * chef-wkhtmltopdf 0.1.0: wkhtmltopdf 0.11.0_rc1
  * chef-wkhtmltopdf 0.2.0: wkhtmltopdf 0.12.0
+ * chef-wkhtmltopdf 0.3.0: wkhtmltopdf 0.12.1
 
 ## Requirements
 
@@ -15,6 +16,7 @@ Cookbook Compatibility:
 * CentOS 6
 * RedHat 6
 * Ubuntu 12.04
+* Ubuntu 14.04
 
 ### Cookbooks
 
@@ -28,19 +30,22 @@ These attributes are under the `node['wkhtmltopdf']` namespace.
 
 Attribute | Description | Type | Default
 ----------|-------------|------|--------
-archive | wkhtmltopdf archive name | String | `wkhtmltox-#{node['wkhtmltopdf']['platform']}_#{node['wkhtmltopdf']['version']}-#{node['wkhtmltopdf']['build_sha']}.tar.xz`
-build_sha | wkhtmltopdf build SHA | String | 03c001d
+archive | wkhtmltopdf archive name | String | `wkhtmltox-#{node['wkhtmltopdf']['version']}_#{node['wkhtmltopdf']['platform']}-#{node['wkhtmltopdf']['architecture']}.#{node['wkhtmltopdf']['suffix']}`
 dependency_packages | Packages that contain wkhtmltopdf dependencies | String | (auto-detected, see attributes/default.rb)
-install_dir | directory to install static binaries | String | /usr/local/bin
+install_dir | directory to install with source | String | /usr/local/bin
 lib_dir | directory to install libraries | String | ''
+install_method | binary(default) or source | String | (auto-detected, see attributes/default.rb)
 mirror_url | URL for wkhtmltopdf | String | (auto-detected, see attributes/default.rb)
-platform | wkhtmltopdf platform and architecture | String | (auto-detected, see attributes/default.rb)
-version | wkhtmltopdf version to install | String | 0.12.0
+suffix | wkhtmltopdf suffix | String | (auto-detected, see attributes/default.rb)
+platform | wkhtmltopdf platform | String | (auto-detected, see attributes/default.rb)
+architecture | wkhtmltopdf architecture | String | (auto-detected, see attributes/default.rb)
+version | wkhtmltopdf version to install | String | 0.12.1
 
 ## Recipes
 
 * `recipe[wkhtmltopdf]` Installs wkhtmltoimage and wkhtmltopdf
-* `recipe[wkhtmltopdf::binary]` Installs wkhtmltoimage and wkhtmltopdf static binaries
+* `recipe[wkhtmltopdf::binary]` Installs wkhtmltoimage with wkhtmltopdf static binaries
+* `recipe[wkhtmltopdf::source]` Installs wkhtmltoimage with wkhtmltopdf sources
 
 ## Usage
 
