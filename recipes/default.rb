@@ -4,4 +4,4 @@ node['wkhtmltopdf']['dependency_packages'].each do |p|
   package p
 end
 
-include_recipe 'wkhtmltopdf::binary'
+include_recipe "wkhtmltopdf::#{node['wkhtmltopdf']['install_method']}"
