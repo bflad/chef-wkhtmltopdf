@@ -28,7 +28,7 @@ when 'windows'
 
 when 'debian'
   platform_version = node[:platform_version].to_f
-  default['wkhtmltopdf']['dependency_packages'] = %w(libfontconfig1 libssl0.9.8 libxext6 libxrender1)
+  default['wkhtmltopdf']['dependency_packages'] = %w(libfontconfig1 libssl0.9.8 libxext6 libxrender1 fontconfig libjpeg8)
   default['wkhtmltopdf']['suffix'] = 'deb'
   if platform?('debian')
     default['wkhtmltopdf']['platform'] = 'linux-wheezy'
