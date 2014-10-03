@@ -1,6 +1,14 @@
 cache_dir = Chef::Config[:file_cache_path]
 download_dest = File.join(cache_dir, node['wkhtmltopdf']['archive'])
-wkhtmltopdf_version = Chef::Version.new(node['wkhtmltopdf']['version'])
+clean_version =  if (match = /^(\d+)\.(\d+)\.(\d+)/.match(node['wkhtmltopdf']['version']))
+    "#{match[1]}.#{match[2]}.#{match[3]}"
+  elsif (match = /^(\d+)\.(\d+)/.match(node['wkhtmltopdf']['version']))
+        "#{match[1]}.#{match[2]}"
+  else
+    node['wkhtmltopdf']['version']
+  end 
+wkhtmltopdf_version = Chef::Version.new(clean_version)
+
 
 remote_file download_dest do
   source node['wkhtmltopdf']['mirror_url']
