@@ -18,7 +18,7 @@ when 'windows'
   end
 else
   default['wkhtmltopdf']['dependency_packages'] = value_for_platform_family(
-    %w(debian) => %w(libfontconfig1 libssl0.9.8 libxext6 libxrender1),
+    %w(debian) => %w(libfontconfig1 libssl1.0.0 libxext6 libxrender1),
     %w(fedora rhel) => %w(fontconfig libXext libXrender openssl-devel urw-fonts)
   )
   if node['kernel']['machine'] == 'x86_64'
