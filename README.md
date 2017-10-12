@@ -6,7 +6,7 @@ Installs [wkhtmltopdf](http://wkhtmltopdf.org) static binaries. This cookbook is
 
 Cookbook Compatibility:
  * chef-wkhtmltopdf 0.1.0: wkhtmltopdf 0.11.0_rc1
- * chef-wkhtmltopdf 0.2.0: wkhtmltopdf 0.12.0
+ * chef-wkhtmltopdf 0.2.0: wkhtmltopdf 0.12.4
 
 ## Requirements
 
@@ -15,6 +15,7 @@ Cookbook Compatibility:
 * CentOS 6
 * RedHat 6
 * Ubuntu 12.04
+* Ubuntu 16.04
 
 ### Cookbooks
 
@@ -28,8 +29,7 @@ These attributes are under the `node['wkhtmltopdf']` namespace.
 
 Attribute | Description | Type | Default
 ----------|-------------|------|--------
-archive | wkhtmltopdf archive name | String | `wkhtmltox-#{node['wkhtmltopdf']['platform']}_#{node['wkhtmltopdf']['version']}-#{node['wkhtmltopdf']['build_sha']}.tar.xz`
-build_sha | wkhtmltopdf build SHA | String | 03c001d
+archive | wkhtmltopdf archive name | String | `wkhtmltox-#{node['wkhtmltopdf']['version']}_#{node['wkhtmltopdf']['platform']}`
 dependency_packages | Packages that contain wkhtmltopdf dependencies | String | (auto-detected, see attributes/default.rb)
 install_dir | directory to install static binaries | String | /usr/local/bin
 lib_dir | directory to install libraries | String | ''
@@ -55,7 +55,7 @@ Here's how you can quickly get testing or developing against the cookbook thanks
     vagrant plugin install vagrant-omnibus
     git clone git://github.com/bflad/chef-wkhtmltopdf.git
     cd chef-wkhtmltopdf
-    vagrant up BOX # BOX being centos5, centos6, debian7, fedora18, fedora19, fedora20, freebsd9, ubuntu1204, ubuntu1210, ubuntu1304, or ubuntu1310
+    vagrant up BOX # BOX being centos5, centos6, debian7, fedora18, fedora19, fedora20, freebsd9, ubuntu1204, ubuntu1210, ubuntu1304, ubuntu1310, or ubuntu1604
 
 You can then SSH into the running VM using the `vagrant ssh BOX` command.
 

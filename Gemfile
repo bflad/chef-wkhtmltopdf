@@ -3,13 +3,13 @@ source 'https://rubygems.org'
 gem 'rake'
 
 group :test, :integration do
-  gem 'berkshelf', '~> 2.0.14'
+  gem 'berkshelf', '~> 6.3.1'
 end
 
 group :test do
-  gem 'chefspec', '~> 4.0'
-  gem 'foodcritic', '~> 3.0.3'
-  gem 'rubocop', '~> 0.23'
+  gem 'chefspec', '~> 7.1.0'
+  gem 'foodcritic', '~> 11.4.0'
+  gem 'rubocop', '~> 0.50.0'
 end
 
 group :integration do
